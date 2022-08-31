@@ -1,0 +1,55 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using CoreLayer.Dto;
+
+
+@model IPagedList<ProductWithBCDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Ürün Listesi</h2>
+
+<form asp-controller="Product" asp-action="Index" method="get">
+    <p>
+        <b>Ürün Ara:</b> <input type="text" name="p"  />
+        <input type="submit" value="Ara"  class="btn btn-info"  />
+    </p>
+</form>
+
+<table  class="table table-bordered" style="margin-right:90px">
+    <tr>
+    <th>Ürün Görseli</th> 
+    <th>Ürün</th>
+    <th>Fiyat</th>
+    <th>Kategori</th>
+    <th>Marka</th>
+    <th>Durumu</th> 
+    <th>Ürün Bilgisi</th>
+    </tr>
+
+
+@foreach(var item in Model)
+    {
+        if (item.isActive == true)
+        {
+            <tr>
+                <td>@item.Photo</td> 
+                <td>@item.Name</td> 
+                <td>@item.Price</td> 
+                <td>@item.CategoryName</td> 
+                <td>@item.BrandName</td> 
+                <td>Stokta Mevcut</td> 
+                <td>@item.Title</td> 
+            </tr>
+        }
+    }
+</table>
+
+@Html.PagedListPager((IPagedList)Model,sayfa => Url.Action("Index",new {sayfa}))
+
+<a href="/Product/Save"class="btn btn-primary">Ürün Ekle</a>
+

@@ -1,0 +1,69 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using CoreLayer.Dto;
+
+
+@model IPagedList<ProductWithBCDto>
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Ürün Güncelleme Listesi</h2>
+
+<form asp-controller="Product" asp-action="Update" method="get">
+    <p>
+        <b>Ürün Ara:</b> <input type="text" name="p"  />
+        <input type="submit" value="Ara"  class="btn btn-info"  />
+    </p>
+</form>
+
+<table  class="table table-bordered" style="margin-right:90px">
+    <tr>
+    <th>Ürün Görseli</th> 
+    <th>Ürün</th>
+    <th>Fiyat</th>
+    <th>Kategori</th>
+    <th>Marka</th>
+    <th>Durumu</th> 
+    <th>Ürün Bilgisi</th> 
+    <th>Ürün Kaldır</th> 
+    <th>Ürün Güncelle</th> 
+    </tr>
+
+
+@foreach(var item in Model)
+    {
+        if (item.isActive == true)
+        {
+            <tr>
+                <td>@item.Photo</td> 
+                <td>@item.Name</td> 
+                <td>@item.Price</td> 
+                <td>@item.CategoryName</td> 
+                <td>@item.BrandName</td> 
+
+                @if(item.isActive == true)
+                {
+                    <td>Stokta Mevcut</td>
+                }
+                @if(item.isActive == false)
+                {
+                    <td>Stokta Mevcut Değil</td>
+                }
+
+                <td>@item.Title</td> 
+
+                <td  style="text-align:center"> <a class="btn btn-danger" asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a></td>
+                <td  style="text-align:center"> <a class="btn btn-success" asp-controller="Product" asp-action="ProductUpdate" asp-route-id="@item.Id">Güncelle</a></td>
+            </tr>
+        }
+    }
+</table>
+
+@Html.PagedListPager((IPagedList)Model,sayfa => Url.Action("Update",new {sayfa}))
+
+<a href="/Product/Save"class="btn btn-primary">Ürün Ekle</a>
+

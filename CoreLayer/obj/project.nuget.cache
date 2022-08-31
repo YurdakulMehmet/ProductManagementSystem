@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "xHrBak6lHy7FE2hsNNn/Q2c75dAEo7NOgnN5/VBqpzkS7kEYBM13bFAXBhpzVWAL+mkRqysGmRcGZEq2g4apIQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\CoreLayer\\CoreLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mehmet.yurdakul\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\mehmet.yurdakul\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\mehmet.yurdakul\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

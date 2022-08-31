@@ -1,0 +1,45 @@
+﻿@using CoreLayer.Models
+@using X.PagedList.Mvc.Core
+@using X.PagedList
+
+@model IPagedList<Brand>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Markalar</h2>
+
+<form asp-controller="Brand" asp-action="Index" method="get">
+    <p>
+        <b>Marka Ara: </b><input type="text" name="p" />
+        <input type="submit" value="Ara" class="btn btn-info" />
+    </p>
+</form>
+
+<table class="table table-bordered" style="margin-right:90px">
+    <tr>
+        <th>Id</th>
+        <th>Marka Adı</th>
+        <th>Durumu</th>
+    </tr>
+
+    @foreach (var item in Model)
+
+    {
+        if (item.isActive == true)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>Marka Mevcut</td>
+            </tr>
+        }
+    }
+
+</table>
+
+@Html.PagedListPager((IPagedList)Model,sayfa => Url.Action("Index",new {sayfa}))
+
+<a href="/Brand/Save" class="btn btn-primary">Marka Ekle</a>
