@@ -10,6 +10,6 @@ namespace CoreLayer.Repositories
     public interface IProductRepository : IGenericRepository<Product>
     {
         Task<List<Product>> GetProductWithBC();
-        //Task<List<Product>> GetProductWithBrand();
+        Task<List<Product>> GetProductWithPhoto();
     }
 }

@@ -8,6 +8,13 @@ namespace CoreLayer.Dto
 {
     public class ProductDto : BaseDto
     {
+        //public ProductDto()
+        //{
+        //    //Mapper gibi fremworkleri kullanmadığın zaman list aktarımı yaparken null hatası alabilirsin
+        //    //o yüzden bu listeleri newletiyoruz null hatası gelmesin diye aklında olsun
+
+        //    ProductPhoto = new List<ProductPhotoDto>();
+        //}
         public string Name { get; set; }
         public string Title { get; set; }
         public decimal Price { get; set; }
@@ -18,7 +25,8 @@ namespace CoreLayer.Dto
 
 
         //public string ChildName { get; set; }
-        public string Photo { get; set; }
+        public List<ProductPhotoDto> ProductPhoto { get; set; }
+
         public string CategoryName { get; set; } 
         public string BrandName { get; set; } 
     }

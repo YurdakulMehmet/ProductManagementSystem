@@ -2,6 +2,7 @@
 using CoreLayer.Dto;
 using CoreLayer.Models;
 using CoreLayer.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RepositoryLayer;
 using System.Text;
@@ -9,6 +10,7 @@ using X.PagedList;
 
 namespace ProductsManagerSystem.Controllers
 {
+    
     public class CategoryController : Controller
     {
         private readonly IService<Category> _service;
@@ -18,7 +20,7 @@ namespace ProductsManagerSystem.Controllers
             _mapper = mapper;
             _service = service;
         }
-
+       
         public async Task<IActionResult> Index(string p,int sayfa = 1)
         {
             var deger = await _service.GetAllAsync();
@@ -82,7 +84,7 @@ namespace ProductsManagerSystem.Controllers
                 var category = _mapper.Map<Category>(categoryDto);
 
                 await _service.UpdateAsync(category);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Update));
             }
             return View();
         }
@@ -96,7 +98,7 @@ namespace ProductsManagerSystem.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        
         public string GenerateRandomCode(int textLength)
         {
             //const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

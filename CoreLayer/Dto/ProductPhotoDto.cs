@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace CoreLayer.Dto
 {
-    public class ProductPhotoDto
+    public class ProductPhotoDto : BaseDto
     {
-        public int Id { get; set; }
         public int ProductId { get; set; }
         public string ImageUrl { get; set; }
         public string Title { get; set; }
         public bool isActive { get; set; }
+
+        public string ProductPhotoName { get; set; }
 
     }
 }

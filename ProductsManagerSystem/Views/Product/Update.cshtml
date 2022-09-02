@@ -22,7 +22,6 @@
 
 <table  class="table table-bordered" style="margin-right:90px">
     <tr>
-    <th>Ürün Görseli</th> 
     <th>Ürün</th>
     <th>Fiyat</th>
     <th>Kategori</th>
@@ -36,10 +35,7 @@
 
 @foreach(var item in Model)
     {
-        if (item.isActive == true)
-        {
             <tr>
-                <td>@item.Photo</td> 
                 <td>@item.Name</td> 
                 <td>@item.Price</td> 
                 <td>@item.CategoryName</td> 
@@ -59,7 +55,7 @@
                 <td  style="text-align:center"> <a class="btn btn-danger" asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a></td>
                 <td  style="text-align:center"> <a class="btn btn-success" asp-controller="Product" asp-action="ProductUpdate" asp-route-id="@item.Id">Güncelle</a></td>
             </tr>
-        }
+        
     }
 </table>
 

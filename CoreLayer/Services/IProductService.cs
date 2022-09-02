@@ -11,6 +11,6 @@ namespace CoreLayer.Services
     public interface IProductService : IService<Product>
     {
         Task<List<ProductWithBCDto>> GetProductWithBC();
-        
+        Task<List<ProductWithPhotoDto>> GetProductWithPhoto();
     }
 }

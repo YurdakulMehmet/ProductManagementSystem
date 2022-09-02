@@ -7,9 +7,11 @@ using X.PagedList.Mvc.Core;
 using X.PagedList;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RepositoryLayer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProductsManagerSystem.Controllers
 {
+    
     public class BrandController : Controller
     {
         private readonly IService<Category> _categoryService;
@@ -23,7 +25,7 @@ namespace ProductsManagerSystem.Controllers
             _mapper = mapper;
         }
 
-
+        
         public async Task<IActionResult> Index(string p,int sayfa = 1)
         {
             var deger = await _service.GetAllAsync();
@@ -82,7 +84,7 @@ namespace ProductsManagerSystem.Controllers
             if (ModelState.IsValid)
             {
                 await _service.UpdateAsync(_mapper.Map<Brand>(brandDto));
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Update));
             }
             return View();
         }

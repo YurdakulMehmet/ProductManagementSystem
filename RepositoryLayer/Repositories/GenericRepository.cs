@@ -67,5 +67,10 @@ namespace RepositoryLayer.Repositories
         {
             return _dbSet.Where(expression);
         }
+
+        public IQueryable<T> Include(Expression<Func<T, bool>> expression)
+        {
+            return _dbSet.Include(expression);
+        }
     }
 }

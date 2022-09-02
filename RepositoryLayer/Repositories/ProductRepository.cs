@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repositories
 {
-    public class ProductRepository : GenericRepository<Product>,IProductRepository
+    public class ProductRepository : GenericRepository<Product>, IProductRepository
+
     {
         public ProductRepository(AppDbContext appDbContext) : base(appDbContext)
         {
         }
 
-        public async Task<List<Product>> GetProductWithBC()
+        public async Task<List<Product>> GetProductWithPhoto()
         {
-            return await _appDbContext.Products.Include(p => p.Category).Include(x=>x.Brand).ToListAsync();
+            return await _appDbContext.Products.Include(p => p.ProductPhoto).ToListAsync();
         }
 
-        //public async Task<List<Product>> GetProductWithBrand()
-        //{
-        //    return await _appDbContext.Products.Include(p => p.Brand).ToListAsync();
-        //}
+        public async Task<List<Product>> GetProductWithBC()
+        {
+            return await _appDbContext.Products.Include(p => p.Category).Include(x => x.Brand).ToListAsync();
+        }   
     }
 }

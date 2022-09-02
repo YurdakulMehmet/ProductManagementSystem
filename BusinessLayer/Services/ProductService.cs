@@ -26,7 +26,13 @@ namespace BusinessLayer.Services
             var bc = await _repository.GetProductWithBC();
             var bcDto = _mapper.Map<List<ProductWithBCDto>>(bc);
             return bcDto;
-            
+        }
+
+        public async Task<List<ProductWithPhotoDto>> GetProductWithPhoto()
+        {
+            var photo = await _repository.GetProductWithPhoto();
+            var photoDto = _mapper.Map<List<ProductWithPhotoDto>>(photo);
+            return photoDto;
         }
     }
 }

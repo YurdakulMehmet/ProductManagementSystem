@@ -21,5 +21,6 @@ namespace CoreLayer.Repositories
         void Update (T entity);
         void Remove (T entity); 
         void RemoveRange(IEnumerable<T> entities);
+        IQueryable<T> Include(Expression<Func<T, bool>> expression);
     }
 }

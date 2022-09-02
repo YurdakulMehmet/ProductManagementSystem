@@ -22,7 +22,6 @@
 
 <table  class="table table-bordered" style="margin-right:90px">
     <tr>
-    <th>Ürün Görseli</th> 
     <th>Ürün</th>
     <th>Fiyat</th>
     <th>Kategori</th>
@@ -37,7 +36,6 @@
         if (item.isActive == true)
         {
             <tr>
-                <td>@item.Photo</td> 
                 <td>@item.Name</td> 
                 <td>@item.Price</td> 
                 <td>@item.CategoryName</td> 
@@ -50,6 +48,3 @@
 </table>
 
 @Html.PagedListPager((IPagedList)Model,sayfa => Url.Action("Index",new {sayfa}))
-
-<a href="/Product/Save"class="btn btn-primary">Ürün Ekle</a>
-

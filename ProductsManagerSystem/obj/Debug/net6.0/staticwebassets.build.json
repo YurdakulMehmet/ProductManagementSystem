@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3Tj7uKgQI48OASMlTLPquv48v71nZXEoiFhF7koNkuk=",
+  "Hash": "9SViGfUM7O3NMC/M/8C9OwEfRGFDbL9rrkqqEzQ47z0=",
   "Source": "ProductsManagerSystem",
   "BasePath": "_content/ProductsManagerSystem",
   "Mode": "Default",
@@ -49,6 +49,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProductsManagerSystem.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\repo.png-65506970-cc76-40e6-99fc-fd42e803e75c.png",
+      "SourceId": "ProductsManagerSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\",
+      "BasePath": "_content/ProductsManagerSystem",
+      "RelativePath": "Content/Images/repo.png-65506970-cc76-40e6-99fc-fd42e803e75c.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\Images\\repo.png-65506970-cc76-40e6-99fc-fd42e803e75c.png"
+    },
+    {
+      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\Screenshot_1.png-113d102c-a1c7-4f98-9605-b6fe84cd2d34.png",
+      "SourceId": "ProductsManagerSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\",
+      "BasePath": "_content/ProductsManagerSystem",
+      "RelativePath": "Content/Images/Screenshot_1.png-113d102c-a1c7-4f98-9605-b6fe84cd2d34.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Content\\Images\\Screenshot_1.png-113d102c-a1c7-4f98-9605-b6fe84cd2d34.png"
     },
     {
       "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\css\\site.css",
