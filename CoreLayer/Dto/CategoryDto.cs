@@ -11,7 +11,8 @@ namespace CoreLayer.Dto
         public int? ParentId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
 
+        
     }
 }

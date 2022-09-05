@@ -26,24 +26,25 @@ namespace ProductsManagerSystem.Controllers
         }
 
         
-        public async Task<IActionResult> Index(string p,int sayfa = 1)
+        public  ActionResult Index(string p,int sayfa = 1)
         {
-            var deger = await _service.GetAllAsync();
+            var brand = _service.Where(x=>x.isActive==true).ToList();
 
-            var degerler = from d in deger select d;
+            var brands = from d in brand select d;
 
             if (!String.IsNullOrEmpty(p))
             {
-                degerler = degerler.Where(s => s.Name!.ToLower().Contains(p));
+                brands = brands.Where(s => s.Name!.ToLower().Contains(p));
             }
 
-            return View(degerler.ToPagedList(sayfa,5));
+            return View(brands.ToPagedList(sayfa,5));
 
         }
         public ActionResult Save()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Save(BrandDto brandDto)
         {
@@ -56,35 +57,20 @@ namespace ProductsManagerSystem.Controllers
             }
             return View();
         }
-
-        public async Task<IActionResult> Update(string p, int sayfa = 1)
-        {
-            var deger = await _service.GetAllAsync();
-
-            var degerler = from d in deger select d;
-
-            if (!String.IsNullOrEmpty(p))
-            {
-                degerler = degerler.Where(s => s.Name!.ToLower().Contains(p));
-            }
-
-            return View(degerler.ToPagedList(sayfa, 5));
-
-        }
  
-        public async Task<IActionResult> BrandUpdate(int id)
+        public async Task<IActionResult> Update(int id)
         {
             var brand = await _service.GetByIdAsync(id);
             return View(_mapper.Map<BrandDto>(brand));
         }
 
         [HttpPost]
-        public async Task<IActionResult> BrandUpdate(BrandDto brandDto)
+        public async Task<IActionResult> Update(BrandDto brandDto)
         {
             if (ModelState.IsValid)
             {
                 await _service.UpdateAsync(_mapper.Map<Brand>(brandDto));
-                return RedirectToAction(nameof(Update));
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
@@ -92,8 +78,8 @@ namespace ProductsManagerSystem.Controllers
         public async Task<IActionResult> Remove(int id)
         {
             var brands = await _service.GetByIdAsync(id);
-
-            await _service.RemoveAsync(brands);
+            brands.isActive = false;
+            _service.SaveChangesAsync(brands);
 
             return RedirectToAction(nameof(Index));
         }

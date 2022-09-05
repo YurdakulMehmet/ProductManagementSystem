@@ -15,10 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\mehmet.yurdakul\source\repos\ProductManagementSystem\ProductsManagerSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Brand/BrandUpdate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRcQnJhbmRVcGRhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Brand/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -29,10 +25,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Brand/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRcVXBkYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Category/CategoryUpdate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ2F0ZWdvcnlVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Category/Index.cshtml]
@@ -53,10 +45,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Product/ProductUpdate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxQcm9kdWN0VXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/mehmet.yurdakul/source/repos/ProductManagementSystem/ProductsManagerSystem/Views/Product/Save.cshtml]

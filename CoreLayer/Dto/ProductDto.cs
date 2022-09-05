@@ -18,10 +18,10 @@ namespace CoreLayer.Dto
         public string Name { get; set; }
         public string Title { get; set; }
         public decimal Price { get; set; }
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
         public int ParentCategoryId { get; set; }
         public int BrandId { get; set; }
-        //public int? ChildCategoryId { get; set; }
+        public int? ChildCategoryId { get; set; }
 
 
         //public string ChildName { get; set; }

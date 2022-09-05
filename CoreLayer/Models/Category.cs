@@ -11,10 +11,10 @@ namespace CoreLayer.Models
         public int? ParentId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
 
 
-        public List<Category> children;
+        public List<Category> Children;
         public Category Parent { get; set; }
         public ICollection<Product> Products { get; set; }
         public ICollection<CategoryAndBrand> CategoryAndBrands { get; set; }

@@ -9,7 +9,7 @@ namespace CoreLayer.Models
     public class Brand : BaseEntity
     {  
         public string Name { get; set; }
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
 
         public ICollection<Product> Products { get; set; }
         public ICollection<CategoryAndBrand> CategoryAndBrands { get; set; }

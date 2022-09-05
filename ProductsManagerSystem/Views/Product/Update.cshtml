@@ -1,65 +1,79 @@
-﻿@using X.PagedList.Mvc.Core
-@using X.PagedList
-@using CoreLayer.Dto;
-
-
-@model IPagedList<ProductWithBCDto>
-
+﻿@using CoreLayer.Dto
 @{
     ViewData["Title"] = "Update";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model ProductDto
 
-<h2>Ürün Güncelleme Listesi</h2>
+<h1>Ürün Güncelleme</h1>
 
-<form asp-controller="Product" asp-action="Update" method="get">
-    <p>
-        <b>Ürün Ara:</b> <input type="text" name="p"  />
-        <input type="submit" value="Ara"  class="btn btn-info"  />
-    </p>
-</form>
+<div class="row">
 
-<table  class="table table-bordered" style="margin-right:90px">
-    <tr>
-    <th>Ürün</th>
-    <th>Fiyat</th>
-    <th>Kategori</th>
-    <th>Marka</th>
-    <th>Durumu</th> 
-    <th>Ürün Bilgisi</th> 
-    <th>Ürün Kaldır</th> 
-    <th>Ürün Güncelle</th> 
-    </tr>
+    <div class=col-md-6>
 
+        <form asp-action="Update" enctype="multipart/form-data" method="post" asp-controller="Product">
 
-@foreach(var item in Model)
-    {
-            <tr>
-                <td>@item.Name</td> 
-                <td>@item.Price</td> 
-                <td>@item.CategoryName</td> 
-                <td>@item.BrandName</td> 
+            <input type="hidden" asp-for="Id" />
 
-                @if(item.isActive == true)
-                {
-                    <td>Stokta Mevcut</td>
-                }
-                @if(item.isActive == false)
-                {
-                    <td>Stokta Mevcut Değil</td>
-                }
+            <div class="form-group">
+                <label>Ürün Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-                <td>@item.Title</td> 
+            <div class="form-group">
+                <label>Ürün Bilgisi</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
 
-                <td  style="text-align:center"> <a class="btn btn-danger" asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a></td>
-                <td  style="text-align:center"> <a class="btn btn-success" asp-controller="Product" asp-action="ProductUpdate" asp-route-id="@item.Id">Güncelle</a></td>
-            </tr>
-        
-    }
-</table>
+            <div class="form-group">
+                <label>Ürün Fiyatı</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
 
-@Html.PagedListPager((IPagedList)Model,sayfa => Url.Action("Update",new {sayfa}))
+            </div>
 
-<a href="/Product/Save"class="btn btn-primary">Ürün Ekle</a>
+            <div class="form-group">
+                <label>Kategorisi</label>
+                <select asp-for="ParentCategoryId" asp-items="ViewBag.categories" class="form-control"></select>
+            </div>
 
+             <div class="form-group">
+                <label>Kategorisi</label>
+                <select asp-for="ChildCategoryId" asp-items="ViewBag.childCategories" class="form-control"></select>
+            </div>
+            
+            <div class="form-group">
+                <label>Markası</label>
+                <select asp-for="BrandId" asp-items="ViewBag.brands" class="form-control"></select>
+            </div>
+            
+            <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="file" name="file" multiple  />
+                    </div>
+                </div> 
+
+                <br />
+                <br />
+          
+            @foreach (var item in Model.ProductPhoto)
+            {
+               <a href="/Content/Images/@item.ImageUrl" target="_blank">
+
+                <img border="0" src="/Content/Images/@item.ImageUrl" width="100px"></a>
+                <td  style="text-align:center"> <a style="height:25px; text-align:center" class="btn btn-danger" asp-controller="Product" asp-action="RemovePhoto" asp-route-id="@item.Id">Sil</a></td>
+            }
+            <br />
+            
+
+            <div class="form-group" style="text-align:center">
+
+                <input type="submit" value="Güncelle" class="btn btn-info" />
+
+            </div>
+        </form>
+    </div>
+</div>

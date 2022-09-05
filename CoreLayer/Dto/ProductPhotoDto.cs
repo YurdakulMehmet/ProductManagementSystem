@@ -11,7 +11,7 @@ namespace CoreLayer.Dto
         public int ProductId { get; set; }
         public string ImageUrl { get; set; }
         public string Title { get; set; }
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
 
         public string ProductPhotoName { get; set; }
 

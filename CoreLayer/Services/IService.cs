@@ -16,7 +16,7 @@ namespace CoreLayer.Services
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
 
         Task<T> AddAsync(T entity);
-
+        Task<T> SaveChangesAsync(T entity);
         Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);

@@ -1,55 +1,32 @@
-﻿@using CoreLayer.Models
-@using X.PagedList.Mvc.Core
-@using X.PagedList
-
-@model IPagedList<Brand>
+﻿@using CoreLayer.Dto
 @{
     ViewData["Title"] = "Update";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model BrandDto
 
-<h2>Marka Güncelleme Listesi</h2>
+<h1>Marka Güncelleme</h1>
 
-<form asp-controller="Brand" asp-action="Update" method="get">
-    <p>
-        <b>Marka Ara: </b><input type="text" name="p" />
-        <input type="submit" value="Ara" class="btn btn-info" />
-    </p>
-</form>
+<div class="row">
 
-<table class="table table-bordered" style="margin-right:90px">
-    <tr>
-        <th>Id</th>
-        <th>Marka Adı</th>
-        <th>Durumu</th>
-        <th>Marka Kaldır</th>
-        <th>Marka Güncelle</th>
+    <div  class=col-md-6>
 
-    </tr>
+        <form asp-action="Update" method="post" asp-controller="Brand">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Name</td>
+            <input type="hidden" asp-for="Id"/>
 
-            @if (item.isActive == true)
-            {
-                <td>Marka Mevcut</td>
-            }
-            @if (item.isActive == false)
-            {
-                <td>Marka Mevcut Değil</td>
-            }
+            <div class="form-group">
+                <label>Marka Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-            <td  style="text-align:center"> <a class="btn btn-danger" asp-controller="Brand" asp-action="Remove" asp-route-id="@item.Id">Sil</a></td>
-            <td  style="text-align:center"> <a class="btn btn-success" asp-controller="Brand" asp-action="Update" asp-route-id="@item.Id">Güncelle</a></td>
-        </tr>
-    }
+            <div class="form-group"style="text-align:center">
 
-</table>
+                <input type="submit" value="Güncelle" class="btn btn-info" />
 
-@Html.PagedListPager((IPagedList)Model,sayfa => Url.Action("Update",new {sayfa}))
-
-<a href="/Brand/Save" class="btn btn-primary">Marka Ekle</a>
+            </div>
+        </form>
+    </div>
+</div>

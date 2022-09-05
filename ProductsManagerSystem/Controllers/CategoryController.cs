@@ -1,16 +1,18 @@
 ﻿using AutoMapper;
 using CoreLayer.Dto;
 using CoreLayer.Models;
+using CoreLayer.Repositories;
 using CoreLayer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RepositoryLayer;
 using System.Text;
 using X.PagedList;
 
 namespace ProductsManagerSystem.Controllers
 {
-    
+
     public class CategoryController : Controller
     {
         private readonly IService<Category> _service;
@@ -20,71 +22,61 @@ namespace ProductsManagerSystem.Controllers
             _mapper = mapper;
             _service = service;
         }
-       
-        public async Task<IActionResult> Index(string p,int sayfa = 1)
-        {
-            var deger = await _service.GetAllAsync();
 
-            var degerler = from d in deger select d;
+        public ActionResult Index(string p, int sayfa = 1)
+        {
+            var product = _service.Where(x => x.isActive == true).ToList();
+
+            var products = from d in product select d;
 
             if (!String.IsNullOrEmpty(p))
             {
-                degerler = degerler.Where(s => s.Name!.ToLower().Contains(p));
-            }
-            ;
-            return View(degerler.ToPagedList(sayfa,5));
+                products = products.Where(s => s.Name!.ToLower().Contains(p));
+            };
+
+
+            return View(products.ToPagedList(sayfa, 5));
         }
 
-        public ActionResult Save()
+        public async Task<IActionResult> Save(Category category)
         {
+            var categories = await _service.GetAllAsync();
+            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
+            ViewBag.categories = new SelectList(categoriesDto, "Id", "Name");
+
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Save(CategoryDto categoryDto)
         {
-            if (ModelState.IsValid)
-            {
-                var category = _mapper.Map<Category>(categoryDto);
-                var code = GenerateRandomCode(5);
-                category.Code = code;
-                await _service.AddAsync(category);
+            var category = _mapper.Map<Category>(categoryDto);
+            var code = GenerateRandomCode(5);
+            category.Code = code;
+            await _service.AddAsync(category);
 
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Update(string p, int sayfa = 1)
+        public async Task<IActionResult> Update(int id)
         {
-            var deger = await _service.GetAllAsync();
+            var categories = await _service.GetAllAsync();
+            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
+            ViewBag.categories = new SelectList(categoriesDto, "Id", "Name");
 
-            var degerler = from d in deger select d;
-
-            if (!String.IsNullOrEmpty(p))
-            {
-                degerler = degerler.Where(s => s.Name!.ToLower().Contains(p));
-            }
-            ;
-            return View(degerler.ToPagedList(sayfa, 5));
-        }
-
-        public async Task<IActionResult> CategoryUpdate(int id)
-        {
             var category = await _service.GetByIdAsync(id);
             return View(_mapper.Map<CategoryDto>(category));
         }
 
         [HttpPost]
-        public async Task<IActionResult> CategoryUpdate(CategoryDto categoryDto)
+        public async Task<IActionResult> Update(CategoryDto categoryDto)
         {
             if (ModelState.IsValid)
             {
                 var category = _mapper.Map<Category>(categoryDto);
 
                 await _service.UpdateAsync(category);
-                return RedirectToAction(nameof(Update));
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }
@@ -93,12 +85,12 @@ namespace ProductsManagerSystem.Controllers
         {
             var category = await _service.GetByIdAsync(id);
 
-            await _service.RemoveAsync(category);
+            category.isActive = false;
+            _service.SaveChangesAsync(category);
 
             return RedirectToAction(nameof(Index));
         }
 
-        
         public string GenerateRandomCode(int textLength)
         {
             //const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -116,8 +108,8 @@ namespace ProductsManagerSystem.Controllers
             StringBuilder sb = new StringBuilder();
 
             var random = new Random();
-            
-            for (var i = 0; i <textLength; i++)
+
+            for (var i = 0; i < textLength; i++)
             {
                 var code = chars[random.Next(chars.Length)];
                 sb.Append(code);

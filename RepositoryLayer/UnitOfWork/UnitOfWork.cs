@@ -22,7 +22,7 @@ namespace RepositoryLayer.UnitOfWork
         }
 
         public async Task CommitAsync()
-        {
+        { 
             await _appDbContext.SaveChangesAsync();
         }
     }

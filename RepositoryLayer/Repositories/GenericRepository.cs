@@ -22,9 +22,7 @@ namespace RepositoryLayer.Repositories
 
         public async Task AddAsync(T entity)
         {
-
             await _dbSet.AddAsync(entity);
-           
         }
 
         public async Task AddRangeAsync(IEnumerable<T> entities)
@@ -60,7 +58,6 @@ namespace RepositoryLayer.Repositories
         public void Update(T entity)
         {
             _dbSet.Update(entity);
-
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
@@ -71,6 +68,11 @@ namespace RepositoryLayer.Repositories
         public IQueryable<T> Include(Expression<Func<T, bool>> expression)
         {
             return _dbSet.Include(expression);
+        }
+
+        public Task SaveChangesAsync(T entity)
+        {
+            return _appDbContext.SaveChangesAsync();
         }
     }
 }

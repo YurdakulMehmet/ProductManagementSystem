@@ -77,8 +77,6 @@ namespace RepositoryLayer
             return base.SaveChangesAsync(cancellationToken);
         }
 
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

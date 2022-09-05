@@ -10,7 +10,7 @@ namespace CoreLayer.Dto
     public class BrandDto : BaseDto
     {
         public string Name { get; set; }
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
         //public Category CategoryName { get; set; }
     }
 }

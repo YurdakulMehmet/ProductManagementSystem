@@ -18,12 +18,12 @@ namespace RepositoryLayer.Repositories
 
         public async Task<List<Product>> GetProductWithPhoto()
         {
-            return await _appDbContext.Products.Include(p => p.ProductPhoto).ToListAsync();
+            return await _appDbContext.Products.Include(p => p.ProductPhoto).Where(x=>x.isActive==true).ToListAsync();
         }
 
         public async Task<List<Product>> GetProductWithBC()
         {
-            return await _appDbContext.Products.Include(p => p.Category).Include(x => x.Brand).ToListAsync();
+            return await _appDbContext.Products.Include(p => p.Category).Include(x => x.Brand).Where(x=>x.isActive==true).ToListAsync();
         }   
     }
 }

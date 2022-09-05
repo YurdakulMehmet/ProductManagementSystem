@@ -27,8 +27,8 @@ namespace BusinessLayer.Services
             await _repository.AddAsync(entity);
             await _unitOfWork.CommitAsync();
             return entity;
-
         }
+
         public async Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities)
         {
             await _repository.AddRangeAsync(entities);
@@ -63,6 +63,13 @@ namespace BusinessLayer.Services
             await _unitOfWork.CommitAsync();
         }
 
+        public async Task<T> SaveChangesAsync(T entity)
+        {
+            _repository.SaveChangesAsync(entity);
+            await _unitOfWork.CommitAsync();
+            return entity;
+        }
+
         public async Task UpdateAsync(T entity)
         {
             _repository.Update(entity);
@@ -73,5 +80,6 @@ namespace BusinessLayer.Services
         {
             return _repository.Where(expression);
         }
+
     }
 }
