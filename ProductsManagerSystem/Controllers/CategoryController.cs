@@ -97,7 +97,7 @@ namespace ProductsManagerSystem.Controllers
             category.isActive = false;
             _categoryService.SaveChangesAsync(category);
 
-            return RedirectToAction(nameof(Index),new { SAYFA = sayfa});
+            return RedirectToAction(nameof(Index));
         }
 
         public string GenerateRandomCode(int textLength)

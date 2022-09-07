@@ -13,7 +13,6 @@ namespace CoreLayer.Models
         public decimal Price { get; set; }
         public bool isActive { get; set; } = true;
         public int ParentCategoryId { get; set; }
-        public int? ChildCategoryId { get; set; }
         public int BrandId { get; set; } 
 
 

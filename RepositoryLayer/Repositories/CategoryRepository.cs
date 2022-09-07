@@ -13,12 +13,6 @@ namespace RepositoryLayer.Repositories
         {
         }
 
-        public async Task<List<Category>> GetAllWithParent()
-        {
-            return await _appDbContext.Categories.Include(p => p.Parent).Where(x => x.isActive == true).ToListAsync();
-        }
-
-
         public async Task<List<Category>> GetCategoryParentTree()
         {
             return await _appDbContext.Categories.Include(p => p.Parent).Where(x => x.isActive == true).ToListAsync();

@@ -6,11 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
-using RepositoryLayer;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
-using System.Net;
-using ProductsManagerSystem.Models;
 
 namespace ProductsManagerSystem.Controllers
 {

@@ -21,12 +21,9 @@ namespace CoreLayer.Dto
         public bool isActive { get; set; } = true;
         public int ParentCategoryId { get; set; }
         public int BrandId { get; set; }
-        public int? ChildCategoryId { get; set; }
 
 
-        //public string ChildName { get; set; }
         public List<ProductPhotoDto> ProductPhoto { get; set; }
-
         public string CategoryName { get; set; } 
         public string BrandName { get; set; } 
     }

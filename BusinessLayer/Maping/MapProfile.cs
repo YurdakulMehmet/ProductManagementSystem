@@ -27,6 +27,8 @@ namespace BusinessLayer.Maping
                 .ForMember(x => x.BrandName, x => x.MapFrom(x => x.Brand.Name));
 
             CreateMap<Brand, BrandWithCategoryDto>().ReverseMap();
+
+            CreateMap<UserDto, User>().ReverseMap();
         }
     }
 }

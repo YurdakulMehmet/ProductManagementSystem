@@ -1,0 +1,91 @@
+/*--
+	Author: proj
+	Author URL: http://proj.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+html,
+body {
+	margin: 0;
+	font-size: 110%;
+	font-family: 'Poppins', sans-serif;
+	background: #fff;
+}
+
+ul.social_list1 li a {
+    color: #fff;
+    font-size: 0.9em;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+    line-height: 29px;
+	text-align: center;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+}
+
+a.navbar-brand {
+	font-size: 1.5em;
+	font-weight: 700;
+	color: #3d3e48;
+	text-transform: initial;
+}
+
+.banner-inner {
+	background-size: cover;
+	min-height: 230px;
+}
+
+footer {
+	padding: 1em 0;
+	background-color: #0e0f10;
+	outline-width: medium;
+}
+
+.footer-grid-agileits-w3ls h2,.footer-grid-agileits-w3ls h3 {
+	font-size: 1.2em;
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.2em;
+}
+
+.copyrighttop ul li a span {
+	text-transform: uppercase;
+	color: #646567;
+	font-weight: 500;
+	font-size: 0.8em;
+	line-height: 2em;
+	letter-spacing: 1px;
+}
+
+.copyrighttop {
+	margin: 2em 0;
+}
+
+a.facebook {
+	color: #fff;
+	font-size: 16px;
+}
+
+a.facebook:hover {
+	color: #01cd74;
+}
+
+.w3layouts-agile-copyrightbottom p {
+	color: #64686b;
+	letter-spacing: 1px;
+	line-height: 28px;
+}
+.copyrighttop li {
+	list-style: none;
+	display: initial;
+}
+
+.w3layouts-agile-copyrightbottom p a {
+	color: #fff;
+}

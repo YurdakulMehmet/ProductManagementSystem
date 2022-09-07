@@ -15,38 +15,43 @@
 
 <form asp-controller="Product" asp-action="Index" method="get">
     <p>
-        <b>Ürün Ara:</b> <input type="text" name="q"  />
-        <input type="submit" value="Ara"  class="btn btn-info"  />
+        <b>Ürün Ara:</b> <input type="text" name="q" />
+        <input type="submit" value="Ara" class="btn btn-info" />
     </p>
 </form>
 
-<table  class="table table-bordered" style="margin-right:90px">
+<table class="table table-bordered" style="margin-right:90px">
     <tr>
-    <th>Ürün</th>
-    <th>Fiyat</th>
-    <th>Kategori</th>
-    <th>Marka</th>
-    <th>Ürün Bilgisi</th>
-    <th>Ürün Kaldır</th>
-    <th>Ürün Güncelle</th>
+        <th>Ürün</th>
+        <th>Fiyat</th>
+        <th>Kategori</th>
+        <th>Marka</th>
+        <th>Ürün Bilgisi</th>
+        <th>Ürün Kaldır</th>
+        <th>Ürün Güncelle</th>
     </tr>
 
 
-@foreach(var item in Model)
+    @foreach (var item in Model)
     {
-            <tr>
-                <td>@item.Name</td> 
-                <td>@item.Price</td> 
-                <td>@item.CategoryName</td>
-                <td>@item.BrandName</td> 
-                <td>@item.Title</td> 
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.CategoryName</td>
+            <td>@item.BrandName</td>
+            <td>@item.Title</td>
 
-                 <td  style="text-align:center"> <a class="btn btn-danger" asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a></td>
-                <td  style="text-align:center"> <a class="btn btn-success" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Güncelle</a></td>
-            </tr>
+            <td style="text-align:center"> <a class="btn btn-danger" asp-controller="Product" asp-action="Remove" asp-route-id="@item.Id">Sil</a></td>
+            <td style="text-align:center"> <a class="btn btn-success" asp-controller="Product" asp-action="Update" asp-route-id="@item.Id">Güncelle</a></td>
+        </tr>
     }
 </table>
 
 @Html.PagedListPager((IPagedList)Model,sayfa => Url.Action("Index",new {sayfa}))
 
-    <a href="/Product/Save"class="btn btn-primary">Ürün Ekle</a>
+<a href="/Product/Save" class="btn btn-primary">Ürün Ekle</a>
+
+<br />
+<br />
+<br />
+<br />

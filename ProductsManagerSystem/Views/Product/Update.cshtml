@@ -43,25 +43,26 @@
                 <label>Markası</label>
                 <select asp-for="BrandId" asp-items="ViewBag.brands" class="form-control"></select>
             </div>
-            
-            <div class="form-group">
-                    <div class="col-md-10">
-                        <input type="file" name="file" multiple  />
-                    </div>
-                </div> 
 
-                <br />
-                <br />
-          
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="file" name="file" multiple />
+                </div>
+            </div>
+
+            <br />
+            <br />
+
             @foreach (var item in Model.ProductPhoto)
             {
-               <a href="/Content/Images/@item.ImageUrl" target="_blank">
+                <a href="/Content/Images/@item.ImageUrl" target="_blank">
 
-                <img border="0" src="/Content/Images/@item.ImageUrl" width="100px"></a>
-                <td  style="text-align:center"> <a style="height:25px; text-align:center" class="btn btn-danger" asp-controller="Product" asp-action="RemovePhoto" asp-route-id="@item.Id">Sil</a></td>
+                    <img border="0" src="/Content/Images/@item.ImageUrl" width="100px">
+                </a>
+                <td style="text-align:center"> <a style="height:25px; text-align:center" class="btn btn-danger" asp-controller="Product" asp-action="RemovePhoto" asp-route-id="@item.Id">Sil</a></td>
             }
             <br />
-            
+
 
             <div class="form-group" style="text-align:center">
 
@@ -71,3 +72,8 @@
         </form>
     </div>
 </div>
+
+<br />
+<br />
+<br />
+<br />

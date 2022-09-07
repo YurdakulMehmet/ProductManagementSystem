@@ -20,6 +20,7 @@ namespace RepositoryLayer
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<ProductPhoto> ProductPhotos { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public override int SaveChanges()
         {
