@@ -16,7 +16,7 @@ namespace BusinessLayer.Maping
             CreateMap<Product, ProductDto>().ReverseMap()
                 .ForMember(x => x.ProductPhoto, x => x.MapFrom(x => x.ProductPhoto));
 
-            CreateMap<Category, CategoryDto>().ReverseMap();  
+            CreateMap<Category, CategoryDto>().ReverseMap();
 
             CreateMap<ProductPhoto, ProductPhotoDto>();
 

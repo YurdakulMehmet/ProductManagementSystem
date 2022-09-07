@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XK27P8eih+5H5bEkdmTK5QI6D61/2yWkDaH2+8cU7yU=",
+  "Hash": "f5rfG05pPvKOa8k51fDSB4b2+2S39LAnBxuhCCPXNvQ=",
   "Source": "ProductsManagerSystem",
   "BasePath": "_content/ProductsManagerSystem",
   "Mode": "Default",
@@ -51,12 +51,12 @@
       "OriginalItemSpec": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ProductsManagerSystem.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\apı bağlatı.png-84187efd-611a-4765-b809-3f9e2b010479.png",
+      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\apı bağlatı.png-4197b121-8c0a-40f3-8fce-18805c5ce7a5.png",
       "SourceId": "ProductsManagerSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\",
       "BasePath": "_content/ProductsManagerSystem",
-      "RelativePath": "Content/Images/apı bağlatı.png-84187efd-611a-4765-b809-3f9e2b010479.png",
+      "RelativePath": "Content/Images/apı bağlatı.png-4197b121-8c0a-40f3-8fce-18805c5ce7a5.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,15 +65,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\Images\\apı bağlatı.png-84187efd-611a-4765-b809-3f9e2b010479.png"
+      "OriginalItemSpec": "wwwroot\\Content\\Images\\apı bağlatı.png-4197b121-8c0a-40f3-8fce-18805c5ce7a5.png"
     },
     {
-      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\repo.png-70844274-329c-4f41-8058-cdc9a66438bf.png",
+      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\repo.png-e554e14f-9dce-4a34-9c79-4ab6d48dabe8.png",
       "SourceId": "ProductsManagerSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\",
       "BasePath": "_content/ProductsManagerSystem",
-      "RelativePath": "Content/Images/repo.png-70844274-329c-4f41-8058-cdc9a66438bf.png",
+      "RelativePath": "Content/Images/repo.png-e554e14f-9dce-4a34-9c79-4ab6d48dabe8.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,15 +82,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\Images\\repo.png-70844274-329c-4f41-8058-cdc9a66438bf.png"
+      "OriginalItemSpec": "wwwroot\\Content\\Images\\repo.png-e554e14f-9dce-4a34-9c79-4ab6d48dabe8.png"
     },
     {
-      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\Screenshot_1.png-95ae6bf7-6ad8-4e2c-965d-a3135b255fba.png",
+      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\Screenshot_1.png-f7d56bbf-1ddf-4ad6-b07e-6ae8492a6460.png",
       "SourceId": "ProductsManagerSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\",
       "BasePath": "_content/ProductsManagerSystem",
-      "RelativePath": "Content/Images/Screenshot_1.png-95ae6bf7-6ad8-4e2c-965d-a3135b255fba.png",
+      "RelativePath": "Content/Images/Screenshot_1.png-f7d56bbf-1ddf-4ad6-b07e-6ae8492a6460.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,15 +99,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\Images\\Screenshot_1.png-95ae6bf7-6ad8-4e2c-965d-a3135b255fba.png"
+      "OriginalItemSpec": "wwwroot\\Content\\Images\\Screenshot_1.png-f7d56bbf-1ddf-4ad6-b07e-6ae8492a6460.png"
     },
     {
-      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\Screenshot_1.png-9b3234a3-fe1b-4f42-b7e1-d6f88ac78c8e.png",
+      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\Screenshot_1.png-fcd84d6c-e02e-4b4d-8b16-3108d42d8b77.png",
       "SourceId": "ProductsManagerSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\",
       "BasePath": "_content/ProductsManagerSystem",
-      "RelativePath": "Content/Images/Screenshot_1.png-9b3234a3-fe1b-4f42-b7e1-d6f88ac78c8e.png",
+      "RelativePath": "Content/Images/Screenshot_1.png-fcd84d6c-e02e-4b4d-8b16-3108d42d8b77.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,15 +116,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\Images\\Screenshot_1.png-9b3234a3-fe1b-4f42-b7e1-d6f88ac78c8e.png"
+      "OriginalItemSpec": "wwwroot\\Content\\Images\\Screenshot_1.png-fcd84d6c-e02e-4b4d-8b16-3108d42d8b77.png"
     },
     {
-      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\Wallpaper.png-506549f9-570b-461d-bbff-0f55e8730744.png",
+      "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\Content\\Images\\Wallpaper.png-8ba04980-d9e8-4c54-82af-7731cfa313ce.png",
       "SourceId": "ProductsManagerSystem",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\",
       "BasePath": "_content/ProductsManagerSystem",
-      "RelativePath": "Content/Images/Wallpaper.png-506549f9-570b-461d-bbff-0f55e8730744.png",
+      "RelativePath": "Content/Images/Wallpaper.png-8ba04980-d9e8-4c54-82af-7731cfa313ce.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,7 +133,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Content\\Images\\Wallpaper.png-506549f9-570b-461d-bbff-0f55e8730744.png"
+      "OriginalItemSpec": "wwwroot\\Content\\Images\\Wallpaper.png-8ba04980-d9e8-4c54-82af-7731cfa313ce.png"
     },
     {
       "Identity": "C:\\Users\\mehmet.yurdakul\\source\\repos\\ProductManagementSystem\\ProductsManagerSystem\\wwwroot\\css\\site.css",

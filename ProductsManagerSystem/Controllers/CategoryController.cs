@@ -15,34 +15,36 @@ namespace ProductsManagerSystem.Controllers
 
     public class CategoryController : Controller
     {
-        private readonly IService<Category> _service;
+        private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
-        public CategoryController(IService<Category> service, IMapper mapper)
+        public CategoryController(ICategoryService categoryService, IMapper mapper)
         {
             _mapper = mapper;
-            _service = service;
+            _categoryService = categoryService;
         }
 
-        public ActionResult Index(string p, int sayfa = 1)
+        public ActionResult Index(string q, int sayfa = 1)
         {
-            var product = _service.Where(x => x.isActive == true).ToList();
+            var product = _categoryService.Where(x => x.isActive == true).ToList();
 
             var products = from d in product select d;
 
-            if (!String.IsNullOrEmpty(p))
+            if (!String.IsNullOrEmpty(q))
             {
-                products = products.Where(s => s.Name!.ToLower().Contains(p));
+                products = products.Where(s => s.Name!.ToLower().Contains(q.ToLower()));
             };
 
 
             return View(products.ToPagedList(sayfa, 5));
         }
 
-        public async Task<IActionResult> Save(Category category)
+        public async Task<IActionResult> Save()
         {
-            var categories = await _service.GetAllAsync();
-            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
-            ViewBag.categories = new SelectList(categoriesDto, "Id", "Name");
+            var category = await _categoryService.GetCategoryParentTree();
+            ViewBag.categories = new SelectList(category, "Id", "Name");
+
+            if (category.Any())
+                category.Insert(0, new CategoryDto { Id = 0, Name = "Seçiniz..." });
 
             return View();
         }
@@ -50,21 +52,26 @@ namespace ProductsManagerSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(CategoryDto categoryDto)
         {
+            if (categoryDto.ParentId == 0)
+                categoryDto.ParentId = null;
+
             var category = _mapper.Map<Category>(categoryDto);
             var code = GenerateRandomCode(5);
             category.Code = code;
-            await _service.AddAsync(category);
+            await _categoryService.AddAsync(category);
 
             return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Update(int id)
         {
-            var categories = await _service.GetAllAsync();
-            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
-            ViewBag.categories = new SelectList(categoriesDto, "Id", "Name");
+            var categoryParent = await _categoryService.GetCategoryParentTree();
+            ViewBag.categories = new SelectList(categoryParent, "Id", "Name");
 
-            var category = await _service.GetByIdAsync(id);
+            if (categoryParent.Any())
+                categoryParent.Insert(0, new CategoryDto { Id = 0, Name = "Seçiniz..." });
+
+            var category = await _categoryService.GetByIdAsync(id);
             return View(_mapper.Map<CategoryDto>(category));
         }
 
@@ -73,22 +80,24 @@ namespace ProductsManagerSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = _mapper.Map<Category>(categoryDto);
+                if (categoryDto.ParentId == 0)
+                    categoryDto.ParentId = null;
 
-                await _service.UpdateAsync(category);
+                var category = _mapper.Map<Category>(categoryDto);
+                await _categoryService.UpdateAsync(category);
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
 
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> Remove(int id, int sayfa)
         {
-            var category = await _service.GetByIdAsync(id);
+            var category = await _categoryService.GetByIdAsync(id);
 
             category.isActive = false;
-            _service.SaveChangesAsync(category);
+            _categoryService.SaveChangesAsync(category);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index),new { SAYFA = sayfa});
         }
 
         public string GenerateRandomCode(int textLength)

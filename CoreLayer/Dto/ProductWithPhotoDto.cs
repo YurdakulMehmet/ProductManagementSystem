@@ -8,6 +8,5 @@ namespace CoreLayer.Dto
 {
     public class ProductWithPhotoDto : ProductDto
     {
-        public ProductPhotoDto ProductPhoto { get; set; }
     }
 }

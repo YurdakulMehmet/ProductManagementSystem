@@ -10,18 +10,19 @@ using RepositoryLayer;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using System.Net;
+using ProductsManagerSystem.Models;
 
 namespace ProductsManagerSystem.Controllers
 {
     public class ProductController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly IService<Category> _categoryService;
         private readonly IService<ProductPhoto> _productPhotoService;
         private readonly IService<Brand> _brandService;
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductService productService, IMapper mapper, IService<Category> categoryService, IService<Brand> brandService, IService<ProductPhoto> productPhotoService)
+        public ProductController(IProductService productService, IMapper mapper, ICategoryService categoryService, IService<Brand> brandService, IService<ProductPhoto> productPhotoService)
         {
             _productService = productService;
             _mapper = mapper;
@@ -30,28 +31,26 @@ namespace ProductsManagerSystem.Controllers
             _productPhotoService = productPhotoService;
         }
 
-        public async Task<IActionResult> Index( string p, int sayfa = 1)
+        public async Task<IActionResult> Index(string q, int sayfa = 1)
         {
             var product = await _productService.GetProductWithBC();
             var products = from d in product select d;
 
-            if (!String.IsNullOrEmpty(p))
+            if (!String.IsNullOrEmpty(q))
             {
-                products =products.Where(s => s.Name!.ToLower().Contains(p));
+                products = products.Where(s => s.Name!.ToLower().Contains(q.ToLower()));
             }
 
             return View(products.ToPagedList(sayfa, 5));
         }
 
+
         public async Task<IActionResult> Save()
         {
-            var categories = await _categoryService.GetAllAsync();
-            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
-            ViewBag.categories = new SelectList(categoriesDto, "Id", "Name");
+            var categoryWithParentList = await _categoryService.GetCategoryParentTree();
 
-            var category = await _categoryService.GetAllAsync();
-            var categoryDto = _mapper.Map<List<CategoryDto>>(category.ToList());
-            ViewBag.childCategories = new SelectList(categoryDto,"Id","Name");
+            ViewBag.categories = new SelectList(categoryWithParentList, "Id", "Name");
+
 
             var brands = await _brandService.GetAllAsync();
             var brandsDto = _mapper.Map<List<BrandDto>>(brands.ToList());
@@ -63,9 +62,6 @@ namespace ProductsManagerSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto, List<IFormFile> file)
         {
-            //if (file == null || !file.Any())
-            //    return BadRequest("Boş Dosya Gödderme");
-
             string[] fileExtensions = new string[] { ".png", ".jpg", ".jpeg" };
 
             if (file.Any(x => !fileExtensions.Contains(Path.GetExtension(x.FileName))))
@@ -77,7 +73,6 @@ namespace ProductsManagerSystem.Controllers
 
             var filePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Content/Images/"));
             string title = "";
-            
 
             foreach (var formFile in file)
             {
@@ -87,9 +82,6 @@ namespace ProductsManagerSystem.Controllers
                 if (size > 3145728)
                     return BadRequest("Dosya boyutu 3mb dan fazla olamaz");
             }
-            
-
-
             foreach (var formFile in file)
             {
                 FileInfo fileinfo = new FileInfo(formFile.FileName);
@@ -100,7 +92,7 @@ namespace ProductsManagerSystem.Controllers
                 {
                     await formFile.CopyToAsync(stream);
                 }
-                productPhotoList.Add(new ProductPhoto { ImageUrl = name, Title = title});
+                productPhotoList.Add(new ProductPhoto { ImageUrl = name, Title = title });
             }
 
             var model = _mapper.Map<Product>(productDto);
@@ -116,40 +108,25 @@ namespace ProductsManagerSystem.Controllers
         {
             var product = await _productService.GetByIdAsync(id);
 
-
             product.ProductPhoto = _productPhotoService.Where(x => x.ProductId == product.Id).ToList();
 
 
-            var categories = await _categoryService.GetAllAsync();
-
-            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
-
-            ViewBag.categories = new SelectList(categoriesDto, "Id", "Name", product);
-
-
-            var category = await _categoryService.GetAllAsync();
-            var categoryDto = _mapper.Map<List<CategoryDto>>(category.ToList());
-            ViewBag.childCategories = new SelectList(categoryDto, "Id", "Name");
-
+            var categoryWithParentList = await _categoryService.GetCategoryParentTree();
+            ViewBag.categories = new SelectList(categoryWithParentList, "Id", "Name");
 
             var brands = await _brandService.GetAllAsync();
-
             var brandsDto = _mapper.Map<List<BrandDto>>(brands.ToList());
-
             ViewBag.brands = new SelectList(brandsDto, "Id", "Name", product);
+
 
             var model = _mapper.Map<ProductDto>(product);
 
             return View(model);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Update(ProductDto productDto, List<IFormFile> file)
         {
-            //if (file == null || !file.Any())
-            //    return BadRequest("Boş Dosya Gödderme");
-
             string[] fileExtensions = new string[] { ".png", ".jpg", ".jpeg" };
 
             if (file.Any(x => !fileExtensions.Contains(Path.GetExtension(x.FileName))))
@@ -162,7 +139,6 @@ namespace ProductsManagerSystem.Controllers
             var filePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Content/Images/"));
             string title = "";
 
-
             foreach (var formFile in file)
             {
                 FileInfo fileinfo = new FileInfo(formFile.FileName);
@@ -171,8 +147,6 @@ namespace ProductsManagerSystem.Controllers
                 if (size > 3145728)
                     return BadRequest("Dosya boyutu 3mb dan fazla olamaz");
             }
-
-            
             foreach (var formFile in file)
             {
                 FileInfo fileinfo = new FileInfo(formFile.FileName);
@@ -199,7 +173,7 @@ namespace ProductsManagerSystem.Controllers
         {
             var product = await _productService.GetByIdAsync(id);
             product.isActive = false;
-            _productService.SaveChangesAsync(product);
+            await _productService.SaveChangesAsync(product);
 
             return RedirectToAction(nameof(Index));
         }
@@ -211,6 +185,44 @@ namespace ProductsManagerSystem.Controllers
             await _productPhotoService.RemoveAsync(productPhoto);
 
             return RedirectToAction(nameof(Update), new { id = productPhoto.ProductId });
+        }
+
+
+        public async Task<IActionResult> UploadPhoto(List<IFormFile> file)
+        {
+            string[] fileExtensions = new string[] { ".png", ".jpg", ".jpeg" };
+
+            if (file.Any(x => !fileExtensions.Contains(Path.GetExtension(x.FileName))))
+            {
+                return BadRequest("Dosya uzantısı .png ,.jpg,.jpeg 'den biri olmalı");
+            }
+
+            var productPhotoList = new List<ProductPhoto>();
+
+            var filePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Content/Images/"));
+            string title = "";
+
+            foreach (var formFile in file)
+            {
+                FileInfo fileinfo = new FileInfo(formFile.FileName);
+                long size = formFile.Length;
+
+                if (size > 3145728)
+                    return BadRequest("Dosya boyutu 3mb dan fazla olamaz");
+            }
+            foreach (var formFile in file)
+            {
+                FileInfo fileinfo = new FileInfo(formFile.FileName);
+                string filename = $"{Guid.NewGuid()}{Path.GetExtension(formFile.FileName)}";
+                title = fileinfo.Name;
+                string name = $"{title}-{filename}";
+                using (var stream = new FileStream(Path.Combine(filePath, name), FileMode.Create))
+                {
+                    await formFile.CopyToAsync(stream);
+                }
+                productPhotoList.Add(new ProductPhoto { ImageUrl = name, Title = title });
+            }
+            return Ok(productPhotoList);
         }
     }
 }

@@ -46,7 +46,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
                 });
 
             modelBuilder.Entity("CoreLayer.Models.Category", b =>
@@ -83,7 +83,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("CoreLayer.Models.CategoryAndBrand", b =>
@@ -112,7 +112,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("CategoryAndBrand");
+                    b.ToTable("CategoryAndBrand", (string)null);
                 });
 
             modelBuilder.Entity("CoreLayer.Models.Product", b =>
@@ -159,7 +159,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("CoreLayer.Models.ProductPhoto", b =>
@@ -188,7 +188,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductPhotos");
+                    b.ToTable("ProductPhotos", (string)null);
                 });
 
             modelBuilder.Entity("CoreLayer.Models.Category", b =>

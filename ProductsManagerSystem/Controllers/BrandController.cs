@@ -26,15 +26,15 @@ namespace ProductsManagerSystem.Controllers
         }
 
         
-        public  ActionResult Index(string p,int sayfa = 1)
+        public  ActionResult Index(string q,int sayfa = 1)
         {
             var brand = _service.Where(x=>x.isActive==true).ToList();
 
             var brands = from d in brand select d;
 
-            if (!String.IsNullOrEmpty(p))
+            if (!String.IsNullOrEmpty(q))
             {
-                brands = brands.Where(s => s.Name!.ToLower().Contains(p));
+                brands = brands.Where(s => s.Name!.ToLower().Contains(q.ToLower()));
             }
 
             return View(brands.ToPagedList(sayfa,5));
@@ -75,7 +75,7 @@ namespace ProductsManagerSystem.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> Remove(int id,int sayfa)
         {
             var brands = await _service.GetByIdAsync(id);
             brands.isActive = false;

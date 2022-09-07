@@ -12,18 +12,20 @@ namespace RepositoryLayer.Repositories
     public class ProductRepository : GenericRepository<Product>, IProductRepository
 
     {
+
         public ProductRepository(AppDbContext appDbContext) : base(appDbContext)
         {
         }
 
         public async Task<List<Product>> GetProductWithPhoto()
         {
-            return await _appDbContext.Products.Include(p => p.ProductPhoto).Where(x=>x.isActive==true).ToListAsync();
+            return await _appDbContext.Products.Include(p => p.ProductPhoto).Where(x => x.isActive == true).ToListAsync();
         }
 
         public async Task<List<Product>> GetProductWithBC()
         {
-            return await _appDbContext.Products.Include(p => p.Category).Include(x => x.Brand).Where(x=>x.isActive==true).ToListAsync();
-        }   
+            return await _appDbContext.Products.Include(p => p.Category).Include(x => x.Brand).Where(x => x.isActive == true).ToListAsync();
+        }
+
     }
 }
