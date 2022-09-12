@@ -58,11 +58,7 @@
   --bs-body-bg: #fff;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
@@ -290,16 +286,6 @@ figure {
   margin: 0 0 1rem;
 }
 
-img,
-svg {
-  vertical-align: middle;
-}
-
-table {
-  caption-side: bottom;
-  border-collapse: collapse;
-}
-
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -307,29 +293,6 @@ caption {
   text-align: left;
 }
 
-th {
-  text-align: inherit;
-  text-align: -webkit-match-parent;
-}
-
-thead,
-tbody,
-tfoot,
-tr,
-td,
-th {
-  border-color: inherit;
-  border-style: solid;
-  border-width: 0;
-}
-
-label {
-  display: inline-block;
-}
-
-button {
-  border-radius: 0;
-}
 
 button:focus:not(:focus-visible) {
   outline: 0;
@@ -412,19 +375,6 @@ legend + * {
   clear: left;
 }
 
-::-webkit-datetime-edit-fields-wrapper,
-::-webkit-datetime-edit-text,
-::-webkit-datetime-edit-minute,
-::-webkit-datetime-edit-hour-field,
-::-webkit-datetime-edit-day-field,
-::-webkit-datetime-edit-month-field,
-::-webkit-datetime-edit-year-field {
-  padding: 0;
-}
-
-::-webkit-inner-spin-button {
-  height: auto;
-}
 
 [type=search] {
   outline-offset: -2px;

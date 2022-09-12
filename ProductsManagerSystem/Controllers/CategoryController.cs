@@ -35,7 +35,7 @@ namespace ProductsManagerSystem.Controllers
             };
 
 
-            return View(products.ToPagedList(sayfa, 5));
+            return View(products.ToPagedList(sayfa,6));
         }
 
         public async Task<IActionResult> Save()

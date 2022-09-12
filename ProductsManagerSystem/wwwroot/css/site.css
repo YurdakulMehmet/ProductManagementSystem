@@ -1,18 +1,154 @@
-html {
-  font-size: 14px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 80px;
+    width:96%;
+    height:90%;
+    max-width:1200px;
+    max-height:1200px;
+    margin:0px auto;
+    background: url("../logo/Wallpaper.png");
+    background-size: cover;
 }
+
+    body h2 {
+        color:white;
+        text-align: center;
+    }
+
+    body h1{
+        color:white;
+        text-align:center;
+    }
+
+    body b{
+        color:white;
+    }
+
+.row{
+    font-size:15px;
+}
+
+
+
+.form-control{
+    background-color:azure;
+    color:#000000;
+}
+
+.col-md-6{
+    width:100%;
+    height:100%;
+    position:relative;
+    font-size:18px;
+    padding:5px 0 5px 0;
+
+}
+
+    body table {
+        color:white;
+        font-size:18px;
+        background-color: #1B1C1D;
+    }
+
+.logoeye {
+    height: 50px;
+}
+
+.pagination-container{
+    font-size:20px;
+}
+
+.navbar {
+    display: flex;
+    list-style: none;
+    padding: 100px 100px 0px 25px;
+    justify-content:space-between;
+}
+
+.navbar ul{
+    display:flex;
+}
+
+.navbar li{
+    list-style:none;
+}
+
+.navbar li a {
+    text-decoration: none;
+    display: flex;
+    text-transform: capitalize;
+    font-size: 130%;
+    color: white;
+    padding: 10px 15px;
+}
+
+        .navbar li a:hover {
+            color: lawngreen;
+        }
+
+footer{
+    color:white;
+}
+
+.footer-content{
+    position:relative;
+}
+
+.footer-content h3 {
+        text-transform: uppercase;
+        text-align:center;
+        font-size: 18px;
+    }
+
+.footer-content p {
+    text-align:center;
+}
+/*
+.footer-bottom {
+    position:absolute;
+    width: 100%;
+    text-align: center;
+}
+
+    .footer-bottom p {
+        font-size: 14px;
+        word-spacing: 2px;
+        text-transform: capitalize;
+    }
+
+    .footer-bottom span {
+        text-transform: uppercase;
+        opacity: .4;
+        font-weight: 200;
+    }*/
+
+
+/*.socials {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+
+    .socials li {
+        margin: 0 10px
+    }
+
+    .socials a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+        .socials a i {
+            font-size: 1.1rem;
+            transition: color .4s ease;
+        }
+
+        .socials a:hover i {
+            color: aqua;
+        }*/
+

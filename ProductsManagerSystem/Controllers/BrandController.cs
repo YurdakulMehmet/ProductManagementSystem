@@ -37,7 +37,7 @@ namespace ProductsManagerSystem.Controllers
                 brands = brands.Where(s => s.Name!.ToLower().Contains(q.ToLower()));
             }
 
-            return View(brands.ToPagedList(sayfa,5));
+            return View(brands.ToPagedList(sayfa,6));
 
         }
         public ActionResult Save()

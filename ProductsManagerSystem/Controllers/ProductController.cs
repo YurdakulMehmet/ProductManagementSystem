@@ -36,7 +36,7 @@ namespace ProductsManagerSystem.Controllers
                 products = products.Where(s => s.Name!.ToLower().Contains(q.ToLower()));
             }
 
-            return View(products.ToPagedList(sayfa, 5));
+            return View(products.ToPagedList(sayfa,6));
         }
 
 
@@ -168,7 +168,7 @@ namespace ProductsManagerSystem.Controllers
         {
             var product = await _productService.GetByIdAsync(id);
             product.isActive = false;
-            await _productService.SaveChangesAsync(product);
+            _productService.SaveChangesAsync(product);
 
             return RedirectToAction(nameof(Index));
         }
